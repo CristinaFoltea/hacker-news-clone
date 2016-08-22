@@ -1,0 +1,22 @@
+body {
+  min-width: 320px; }
+
+#mainWrapper {
+  width: 85%;
+  margin: 0 auto; }
+
+#header {
+  background-color: #ff6600; }
+  #header a {
+    text-decoration: none; }
+    #header a img {
+      margin: auto .15em;
+      border: 0.1em solid #FFF; }
+  #header .title {
+    font-weight: bold;
+    font-size: 1em;
+    color: #000;
+    margin: auto 0; }
+
+#topStories {
+  background-color: #f6f6ef; }

@@ -1,0 +1,14 @@
+@mixin respond-to( $media ){
+    @if $media == tablet{
+        @media only screen and (min-width: $tablet-breakpoint ){ @content; }
+    }
+    @elseif $media == desktop{
+        @media only screen and (min-width: $desktop-breakpoint ){ @content; }
+    }
+    @elseif $media == tall{
+        @media only screen and (min-height: $tall-breakpoint ){ @content; }
+    }
+    @elseif $media == "tall and tablet"{
+        @media only screen and (min-height: $tall-breakpoint) and (min-width: $tablet-breakpoint){ @content; }
+    }
+}

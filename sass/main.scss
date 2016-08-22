@@ -1,0 +1,35 @@
+@import "variables/base";
+@import "mixins/base";
+
+body {
+    min-width: $minimum-width;
+}
+
+#mainWrapper {
+    width: 85%;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: $headerColor;
+
+    a {
+        text-decoration: none;
+
+        img {
+            margin: auto .15em;
+            border: $standard-border solid $white;
+        }
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: $standard-font-size;
+        color: $black;
+        margin: auto 0;
+    }
+}
+
+#topStories {
+    background-color: $backgroundColor;
+}

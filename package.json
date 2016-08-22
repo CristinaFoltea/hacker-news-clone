@@ -1,0 +1,15 @@
+{
+  "name": "hacker-news-clone",
+  "version": "1.0.0",
+  "description": "Hacker News clone app for ShaleApps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erich Rahm",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}
