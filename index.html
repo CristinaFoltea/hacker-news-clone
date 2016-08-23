@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+        <script src="node_modules/moment/moment.js"></script>
         <script src="app.js"></script>
         <script src="services/firebaseService.js"></script>
         <script src="storyList/storyListController.js"></script>
@@ -22,8 +22,14 @@
                 </div>
                 <div id="topStories">
                     <ol>
-                        <li ng-repeat="story in topStories[ currentPage ]">
-                            <div>{{ story }}</div>
+                        <li ng-repeat="story in topStories track by $index">
+                            <div class="storyTitle">
+                                {{ story.title }}
+                                <span class="storyDomain">({{ story.domain }})</span>
+                            </div>
+                            <div class="storyDetails">
+                                <span> {{ story.score }} points by {{ story.by }} {{ story.relativeTime }} | {{ story.descendants }} comments</span>
+                            </div>
                         </li>
                     </ol>
                 </div>

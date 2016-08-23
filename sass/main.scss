@@ -32,4 +32,28 @@ body {
 
 #topStories {
     background-color: $backgroundColor;
+    padding: .25em 0;
+
+    ol {
+        margin-left: -0.5em;
+    }
+    
+    li {
+        margin: .25em 0;
+    }
+
+    .storyTitle {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: .85em;
+    }
+
+    .storyDomain {
+        font-size: .8em;
+        color: $gray;
+    }
+
+    .storyDetails {
+        font-size: .7em;
+        color: $gray;
+    }
 }

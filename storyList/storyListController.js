@@ -18,6 +18,16 @@ app.controller( "storyListController", function( $scope, FirebaseService ) {
         });
     };
 
+    var storyDomain = function( url ) {
+        var a = document.createElement( 'a' );
+        a.setAttribute( 'href', url );
+        return a.hostname.replace( "www.", "");
+    };
+
+    var storyTimeRelativeToNow = function( timestamp ) {
+        return moment.unix( timestamp ).fromNow();
+    };
+
     var retrieveTopStoriesIds = function() {
         var topStoryIds = [];
 
@@ -28,27 +38,18 @@ app.controller( "storyListController", function( $scope, FirebaseService ) {
     };
 
     var retrieveTopStoriesForCurrentPage = function() {
-        var topStories = [];
 
         retrieveTopStoriesIds().then( function( topStoryIds ) {
             topStoryIds[ $scope.currentPage ].forEach( function( id ) {
                 FirebaseService.fetchSnapshot( 'item/' + id ).then( function( story ) {
-                    if ( story.kids ) {
-                        story.comments = [];
-                        story.kids.forEach( function( commentId ) {
-                            FirebaseService.fetchSnapshot( 'item/' + commentId ).then( function( comment ) {
-                                story.comments.push( comment );
-                            });
-                        });
-                    }
-
-                    topStories.push( story );
+                    story.domain = storyDomain( story.url );
+                    story.relativeTime = storyTimeRelativeToNow( story.time );
+                    $scope.topStories.push( story );
+                    $scope.$apply();
                 });
             });
         });
-        console.log( topStories );
-        return topStories;
     };
 
-    $scope.topStories[ $scope.currentPage ] = retrieveTopStoriesForCurrentPage();
+    retrieveTopStoriesForCurrentPage();
 });
