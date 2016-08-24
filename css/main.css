@@ -6,17 +6,57 @@ body {
   margin: 0 auto; }
 
 #header {
-  background-color: #ff6600; }
+  background-color: #ff6600;
+  line-height: .875em; }
   #header a {
-    text-decoration: none; }
+    text-decoration: none;
+    line-height: 1em; }
     #header a img {
-      margin: auto .15em;
+      margin: .2em .15em 0 .15em;
       border: 0.1em solid #FFF; }
   #header .title {
+    font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
     font-size: 1em;
-    color: #000;
-    margin: auto 0; }
+    color: #000; }
 
 #topStories {
-  background-color: #f6f6ef; }
+  background-color: #f6f6ef;
+  padding: .25em 0; }
+  #topStories ol {
+    margin-left: -0.5em; }
+  #topStories li {
+    margin: .25em 0; }
+  #topStories .storyTitle a {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: .85em;
+    text-decoration: none;
+    color: #000; }
+  #topStories .storyTitle a:visited {
+    color: #828282; }
+  #topStories .storyDomain {
+    font-size: .8em;
+    color: #828282; }
+  #topStories .storyDetails {
+    font-size: .7em;
+    color: #828282; }
+
+.pageControl {
+  text-decoration: underline; }
+
+.pageControl:hover {
+  cursor: pointer; }
+
+@media only screen and (min-width: 48em) and (max-width: 78em) {
+  body {
+    font-size: 1.1em; }
+  #mainWrapper {
+    width: 100%; } }
+
+@media only screen and (max-width: 48em) {
+  body {
+    font-size: 1.2em; }
+  #mainWrapper {
+    width: 100%; }
+    #mainWrapper #header {
+      line-height: 2em; } }

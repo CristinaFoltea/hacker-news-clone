@@ -1,5 +1,4 @@
 @import "variables/base";
-@import "mixins/base";
 
 body {
     min-width: $minimum-width;
@@ -12,21 +11,23 @@ body {
 
 #header {
     background-color: $headerColor;
+    line-height: .875em;
 
     a {
         text-decoration: none;
+        line-height: 1em;
 
         img {
-            margin: auto .15em;
+            margin: .2em .15em 0 .15em;
             border: $standard-border solid $white;
         }
     }
 
     .title {
+        font-family: Verdana, Geneva, sans-serif;
         font-weight: bold;
         font-size: $standard-font-size;
         color: $black;
-        margin: auto 0;
     }
 }
 
@@ -37,14 +38,22 @@ body {
     ol {
         margin-left: -0.5em;
     }
-    
+
     li {
         margin: .25em 0;
     }
 
     .storyTitle {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: .85em;
+        a {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: .85em;
+            text-decoration: none;
+            color: $black;
+        }
+
+        a:visited {
+            color: $gray;
+        }
     }
 
     .storyDomain {
@@ -55,5 +64,37 @@ body {
     .storyDetails {
         font-size: .7em;
         color: $gray;
+    }
+}
+
+.pageControl {
+    text-decoration: underline;
+}
+
+.pageControl:hover {
+    cursor: pointer;
+}
+
+@media only screen and ( min-width: $tablet-breakpoint ) and ( max-width: $desktop-breakpoint ) {
+    body {
+        font-size: 1.1em;
+    }
+
+    #mainWrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and ( max-width: $tablet-breakpoint ) {
+    body {
+        font-size: 1.2em;
+    }
+
+    #mainWrapper {
+        width: 100%;
+
+        #header {
+            line-height: 2em;
+        }
     }
 }

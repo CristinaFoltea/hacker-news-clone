@@ -1,7 +1,8 @@
 app.controller( "storyListController", function( $scope, FirebaseService ) {
     $scope.currentPage = 0;
     $scope.topStories = $scope.topStories || [];
-    
+    $scope.lastVisited = localStorage.getItem( 'lastVisited' );
+
     /*
     ** formatIdsArray takes in an array of ids and formats them
     ** into a multi dimensional array where each index is an array
@@ -44,6 +45,7 @@ app.controller( "storyListController", function( $scope, FirebaseService ) {
     };
 
     var retrieveTopStoriesForCurrentPage = function() {
+        $scope.topStories = [];
 
         retrieveTopStoriesIds().then( function( topStoryIds ) {
             topStoryIds[ $scope.currentPage ].forEach( function( id ) {
@@ -57,5 +59,21 @@ app.controller( "storyListController", function( $scope, FirebaseService ) {
         });
     };
 
-    retrieveTopStoriesForCurrentPage();
+    var calculateStartingNumber = function() {
+        var storiesPerPage = 20;
+        return storiesPerPage * ( $scope.currentPage ) + 1;
+    }
+
+    $scope.$watch( 'currentPage', function() {
+        var startingNumber = calculateStartingNumber();
+        var orderedList = document.getElementsByTagName( 'ol' )[ 0 ];
+        orderedList.setAttribute( 'start', startingNumber );
+        retrieveTopStoriesForCurrentPage();
+    });
+
+    var storyClicked = function( id ) {
+        $scope.lastVisited = id;
+        localStorage.setItem( 'lastVisited', id );
+        alert( id );
+    }
 });

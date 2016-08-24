@@ -23,16 +23,19 @@
                 <div id="topStories">
                     <ol>
                         <li ng-repeat="story in topStories track by $index">
-                            <div class="storyTitle">
-                                {{ story.title }}
+                            <div class="storyTitle" ng-click="storyClicked( story.id )">
+                                <a href="{{ story.url }}" >{{ story.title }}</a>
                                 <span class="storyDomain">({{ story.domain }})</span>
                             </div>
                             <div class="storyDetails">
                                 <span> {{ story.score }} points by {{ story.by }} {{ story.relativeTime }} | {{ story.descendants }} comments</span>
+                                <span ng-show="lastVisited == story.id"> | Last Visited</span>
                             </div>
                         </li>
                     </ol>
                 </div>
+                <span class="pageControl" ng-click="currentPage = currentPage - 1" ng-show="currentPage > 0" >Previous</span>
+                <span class="pageControl" ng-click="currentPage = currentPage + 1">Next</span>
             </div>
         </div>
     </body>
