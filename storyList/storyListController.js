@@ -1,7 +1,12 @@
 app.controller( "storyListController", function( $scope, FirebaseService ) {
     $scope.currentPage = 0;
     $scope.topStories = $scope.topStories || [];
-
+    
+    /*
+    ** formatIdsArray takes in an array of ids and formats them
+    ** into a multi dimensional array where each index is an array
+    ** of 20 ids. This will make pagination easier.
+    */
     var formatIdsArray = function( ids, topStoryIds ) {
         var count = 0;
         var values = [];
@@ -18,6 +23,7 @@ app.controller( "storyListController", function( $scope, FirebaseService ) {
         });
     };
 
+    /* storyDomain will strip "www." but leave any subdomains */
     var storyDomain = function( url ) {
         var a = document.createElement( 'a' );
         a.setAttribute( 'href', url );
